@@ -3,4 +3,4 @@ The analysis code corresponding to the paper  "Personalized neoantigen-based T c
 
 
 We do use Seurat 4.3.0 as a reference for 10 analyses. https://satijalab.org/seurat/articles/pbmc3k_tutorial.html
-Cell ranger software 7.0 from 10x Genomics was performed for RNA-seq process.
+Cell ranger software 7.0 from 10x Genomics was performed for RNA-seq process. https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/tutorial_ov
