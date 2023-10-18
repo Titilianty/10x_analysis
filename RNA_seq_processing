@@ -1,1 +1,15 @@
+#reference: https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/tutorial_ct
+#RNA seq processing for case1
+cellranger count --id=case1 \
+   --fastqs=/mnt/home/hunglab/run_cellranger_count/case1_pbmc_fastqs \
+   --sample=case1_pbmc \
+   --transcriptome=/mnt/home/hunglab/run_cellranger_count/refdata-gex-GRCh38-2020-A
 
+
+#RNA seq processing for case2
+cellranger count --id=case2 \
+   --fastqs=/mnt/home/hunglab/run_cellranger_count/case2_pbmc_fastqs \
+   --sample=case2_pbmc \
+   --transcriptome=/mnt/home/hunglab/run_cellranger_count/refdata-gex-GRCh38-2020-A
+
+#The cellranger count pipeline outputs are in the pipestance directory in the outs folder.
