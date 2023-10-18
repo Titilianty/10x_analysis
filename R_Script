@@ -9,18 +9,18 @@ library(data.table)
 library(dplyr)
 
 ##########################Input directory
-dir1='d:\\Work_I\\Data_10x\\CA1012_PBMC\\CA1012-20181210-PBMC_G\\filtered_feature_bc_matrix\\'
-dir2='d:\\Work_I\\Data_10x\\CA1012_PBMC\\CA1012_PG_201119_GEX\\raw_feature_bc_matrix\\'
+dir1='d:\\Work_I\\Data_10x\\Case1_Before_PBMC\\raw_feature_bc_matrix\\'
+dir2='d:\\Work_I\\Data_10x\\Case1_After_PBMC\\raw_feature_bc_matrix\\'
 
-dir3='d:\\Work_I\\Data_10x\\10x_Data_List\\CA1030LeuG_GEX\\raw_feature_bc_matrix'
-dir4='d:\\Work_I\\Data_10x\\10x_Data_List\\CA1030PGEX_GEX\\raw_feature_bc_matrix'
+dir3='d:\\Work_I\\Data_10x\\Case2_Before\\raw_feature_bc_matrix'
+dir4='d:\\Work_I\\Data_10x\\Case2_After\\raw_feature_bc_matrix'
 
 source('Read10X_Pro.R')
-S1 <- Read10X_Pro( dir1,"Before", "CA1012_20181210",3,200,'Q3',5)   
-S2 <- Read10X_Pro( dir2,"After", "CA1012_201119",3,200,'Q3',5) 
+S1 <- Read10X_Pro( dir1,"Before", "Case1_Before",3,200,'Q3',5)   
+S2 <- Read10X_Pro( dir2,"After", "Case1_After",3,200,'Q3',5) 
 
-S3 <- Read10X_Pro( dir3,"Before", "CA1030LeuG_GEX",3,200,'Q3',5) 
-S4 <- Read10X_Pro( dir4,"After", "CA1030PGEX_GEX",3,200,'Q3',5)
+S3 <- Read10X_Pro( dir3,"Before", "Case2_Before",3,200,'Q3',5) 
+S4 <- Read10X_Pro( dir4,"After", "Case2_After",3,200,'Q3',5)
 
 
 source("BFtool.R")
