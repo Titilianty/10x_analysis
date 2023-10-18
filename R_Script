@@ -9,11 +9,11 @@ library(data.table)
 library(dplyr)
 
 ##########################Input directory
-dir1='d:\\Work_I\\Data_10x\\Case1_Before_PBMC\\raw_feature_bc_matrix\\'
-dir2='d:\\Work_I\\Data_10x\\Case1_After_PBMC\\raw_feature_bc_matrix\\'
+dir1='d:\\Work_I\\Data_10x\\Case1_Before_PBMC\\filtered_feature_bc_matrix\\'
+dir2='d:\\Work_I\\Data_10x\\Case1_After_PBMC\\filtered_feature_bc_matrix\\'
 
-dir3='d:\\Work_I\\Data_10x\\Case2_Before\\raw_feature_bc_matrix'
-dir4='d:\\Work_I\\Data_10x\\Case2_After\\raw_feature_bc_matrix'
+dir3='d:\\Work_I\\Data_10x\\Case2_Before\\filtered_feature_bc_matrix'
+dir4='d:\\Work_I\\Data_10x\\Case2_After\\filtered_feature_bc_matrix'
 
 source('Read10X_Pro.R')
 S1 <- Read10X_Pro( dir1,"Before", "Case1_Before",3,200,'Q3',5)   
