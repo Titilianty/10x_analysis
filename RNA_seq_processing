@@ -12,4 +12,5 @@ cellranger count --id=case2 \
    --sample=case2_pbmc \
    --transcriptome=/mnt/home/hunglab/run_cellranger_count/refdata-gex-GRCh38-2020-A
 
-#The cellranger count pipeline outputs are in the pipestance directory in the outs folder.
+#The cell ranger count pipeline outputs are in the pipestance directory in the outs folder.
+#The main outputs are cloupe.cloupe file,web_summary.html and the matrix files are used for further analysis.
