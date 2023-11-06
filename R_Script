@@ -36,6 +36,46 @@ PCA_Umap <- function(S.combined){
   S.combined <- FindClusters(S.combined)
   return(S.combined)
 }
+immune.combined <-BFtool( S.combined, "PCA_Umap")
+
+#############################Umap Drawing
+
+p1 <- DimPlot(immune.combined, reduction = "umap", split.by  = "orig.ident", pt.size = 0.7, label.size = 3, repel = TRUE, label = TRUE,raster = FALSE) 
+ggsave(paste0(PJdir , PJname, "SampleClusterPreview.png"), p1, dpi=300, width=15, height = 7)
+
+
+#############################Rename Cluster
+new.cluster.ids <- c("C0,4,11,32,43:CTL",  "C1,7,9,10,17,27,31,37,39:NK",  "C2,6:CD4 Naïve",  "C3,22,24:CD4TCM",  "C0,4,11,32,43:CTL",  "C5,13,16,25,29,40,45,48:MonoCD16-",  "C2,6:CD4 Naïve",  "C1,7,9,10,17,27,31,37,39:NK",  "C8,12,42:B Naïve",  "C1,7,9,10,17,27,31,37,39:NK",  "C1,7,9,10,17,27,31,37,39:NK", "C0,4,11,32,43:CTL", "C8,12,42:B Naïve", "C5,13,16,25,29,40,45,48:MonoCD16-", "C14,18,33,36:M1", "C15,21:CD4 Naïve",
+                     "C5,13,16,25,29,40,45,48:MonoCD16-", "C1,7,9,10,17,27,31,37,39:NK", "C14,18,33,36:M1", "C19,46:B cell", "C20:MonoCD16+", "C15,21:CD4 Naïve", "C3,22,24:CD4TCM", "C23:CD4TEM", "C3,22,24:CD4TCM","C5,13,16,25,29,40,45,48:MonoCD16-", "C26:M2", "C1,7,9,10,17,27,31,37,39:NK","C28:Erythroblast", "C5,13,16,25,29,40,45,48:MonoCD16-",
+                     "C30:Platelets", "C1,7,9,10,17,27,31,37,39:NK", "C0,4,11,32,43:CTL", "C14,18,33,36:M1", "C34:gDT", "C35,38:MonoFcgR", "C14,18,33,36:M1", "C1,7,9,10,17,27,31,37,39:NK", "C35,38:MonoFcgR", "C1,7,9,10,17,27,31,37,39:NK", "C5,13,16,25,29,40,45,48:MonoCD16-",
+                     "C41:DC", "C8,12,42:B Naïve", "C0,4,11,32,43:CTL", "C44:GranMono-pro", "C5,13,16,25,29,40,45,48:MonoCD16-", "C19,46:B cell", "C47:Neutrophil","C5,13,16,25,29,40,45,48:MonoCD16-")
+names(new.cluster.ids) <- levels(immune.combined)
+immune.combined <- RenameIdents(immune.combined, new.cluster.ids)
+
+
+#############################Volcano Plot
+library(ggrepel)
+source('CompareGeneExpress_Sample.r')
+cellTypeMarker <-CompareGeneExpress_Sample( immune.combined, "subsetCluster","Blister", "PBMC")
+
+threshold_avgFC <- 1.0
+threshold_pvalueadj <- 0.05
+threshold_avgFC1 <- -1.0
+source('VolcanoPlot.r')
+VolcanoPlot(cellTypeMarker,threshold_avgFC, threshold_pvalueadj, threshold_avgFC1)
+
+#############################Pathway Analysis
+library(ggplot2)
+library(cowplot)
+library(clusterProfiler)
+library(AnnotationDbi)
+library(org.Hs.eg.db)
+library(ggplot2)
+Ca = "Cells"
+source( "clusterProfilerFunA.R")
+
+selectGenes <- c("","","")
+clusterProfilerFunA( selectGenes, paste0( Ca, "Up"))
 
 
 
